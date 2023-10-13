@@ -2,15 +2,18 @@ import streamlit as st
 import pickle
 import pandas as pd
 import requests
+import joblib
 # dc35e67a529e6e6265a4d325eb09bdfa
 # api.themoviedb.org/3/movie/65?api_key=dc35e67a529e6e6265a4d325eb09bdfa&language=en-US
 # Load the movie data
 
 
-movies_df = pickle.load(open('movies.pkl', 'rb'))
+# movies_df = pickle.load(open('movies.pkl', 'rb'))
+movies_df = joblib.load(open('movies.pkl', 'rb'))
 
 # Load the similarity scores
-similarity = pickle.load(open('similarity.pkl', 'rb'))
+# similarity = pickle.load(open('similarity.pkl', 'rb'))
+similarity = joblib.load(open('similarity.pkl', 'rb'))
 
 def fetch_poster(movie_id):
     response = requests.get('https://api.themoviedb.org/3/movie/{}?api_key=dc35e67a529e6e6265a4d325eb09bdfa&language=en-US'.format(movie_id))
