@@ -9,11 +9,14 @@ import joblib
 
 
 # movies_df = pickle.load(open('movies.pkl', 'rb'))
-movies_df = joblib.load(open('movies.pkl', 'rb'))
-
+# movies_df = joblib.load(open('movies.pkl', 'rb'))
+with open('movies.pkl', 'rb') as f:
+      movies_df = pd.read_pickle(f)
 # Load the similarity scores
 # similarity = pickle.load(open('similarity.pkl', 'rb'))
-similarity = joblib.load(open('similarity.pkl', 'rb'))
+# similarity = joblib.load(open('similarity.pkl', 'rb'))
+with open('similarity.pkl', 'rb') as f:
+      similarity = pd.read_pickle(f)
 
 def fetch_poster(movie_id):
     response = requests.get('https://api.themoviedb.org/3/movie/{}?api_key=dc35e67a529e6e6265a4d325eb09bdfa&language=en-US'.format(movie_id))
